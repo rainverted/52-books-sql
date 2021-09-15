@@ -14,6 +14,11 @@ app.init = async () => {
 
     // LOGIC BELOW
     await Author.create(conn, 'Vardenis', 'Pavardenis');
+    await Author.create(conn, 'Petras', 'Petraitis');
+    await Author.create(conn, 'Jonas', 'Jonaitis');
+
+    const authors = await Author.listAll(conn);
+    console.log(authors);
 }
 
 app.init();
