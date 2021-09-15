@@ -23,8 +23,11 @@ app.init = async () => {
     const uniqueId = await Author.findById(conn, 3);
     console.log(uniqueId);
 
-    const name = await Author.findByFirstname(conn, 'Petras');
-    console.log(name);
+    const firstName = await Author.findByFirstname(conn, 'Petras');
+    console.log(firstName);
+
+    const lastName = await Author.findByLastname(conn, 'Vardenis');
+    console.log(lastName);
 }
 
 app.init();

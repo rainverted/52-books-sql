@@ -45,6 +45,7 @@ Author.findById = async (connection, authorId) => {
     for (const { firstname, lastname } of rows) {
         console.log(`Autoriaus "${firstname} ${lastname}" unikalus id:${authorId}.`)
     }
+    return
     // console.log(rows);
 }
 
@@ -54,11 +55,18 @@ Author.findByFirstname = async (connection, authorFirstname) => {
                 WHERE `firstname` LIKE  "%' + authorFirstname + '%"';
     const [rows] = await connection.execute(sql);
     for (const { id } of rows) {
-        console.log(`Autoriaus, kurio id:${id} vardas - ${authorFirstname}.`)
+        console.log(`Autoriaus, kurio vardas - ${authorFirstname}, id - ${id}.`)
     }
 }
 
 Author.findByLastname = async (connection, authorLastname) => {
+    const sql = 'SELECT *\
+                FROM `authors`\
+                 WHERE `lastname` LIKE  "%' + authorLastname + '%"';
+    const [rows] = await connection.execute(sql);
+    for (const { id } of rows) {
+        console.log(`Autoriaus, kurio pavarde - ${authorLastname}, id - ${id}.`)
+    }
 }
 
 Author.updatePropertyById = async (connection, authorId, propertyName, propertyValue) => {
