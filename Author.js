@@ -26,7 +26,7 @@ Author.listAll = async (connection) => {
     console.log('');
     console.log('Autoriu sarasas:');
     const list = [];
-    i = 0;
+    let i = 0;
     for (const { firstname, lastname } of rows) {
         list.push(`${++i}) ${firstname} ${lastname}`);
     }
@@ -37,7 +37,15 @@ Author.listAll = async (connection) => {
 }
 
 Author.findById = async (connection, authorId) => {
-
+    const sql = 'SELECT *\
+                FROM `authors`\
+                WHERE `id` = '+ authorId;
+    const [rows] = await connection.execute(sql);
+    console.log('');
+    for (const { firstname, lastname } of rows) {
+        console.log(`Autoriaus "${firstname} ${lastname}" unikalus id:${authorId}.`)
+    }
+    // console.log(rows);
 }
 
 Author.findByFirstname = async (connection, authorFirstname) => {

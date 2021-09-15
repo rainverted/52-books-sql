@@ -19,6 +19,11 @@ app.init = async () => {
 
     const authors = await Author.listAll(conn);
     console.log(authors);
+
+    const uniqueId = await Author.findById(conn, 3);
+    console.log(uniqueId);
+
+
 }
 
 app.init();
