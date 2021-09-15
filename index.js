@@ -28,6 +28,12 @@ app.init = async () => {
 
     const lastName = await Author.findByLastname(conn, 'Vardenis');
     console.log(lastName);
+
+    // const update = await Author.updatePropertyById(conn, 1, 'Vardenis', 'Tomas')
+    // console.log(update);
+
+    const deleteAuthor = await Author.delete(conn, 3);
+    console.log(deleteAuthor);
 }
 
 app.init();

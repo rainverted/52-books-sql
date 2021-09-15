@@ -69,10 +69,21 @@ Author.findByLastname = async (connection, authorLastname) => {
     }
 }
 
-Author.updatePropertyById = async (connection, authorId, propertyName, propertyValue) => {
-}
+// Author.updatePropertyById = async (connection, authorId, propertyName, propertyValue) => {
+//     const sql = 'UPDATE `authors` SET ' + propertyName + '= "' + propertyValue + '" WHERE `authors`.`id` = ' + authorId;
+
+//     const [rows] = await connection.execute(sql);
+
+//     console.log(rows);
+// }
 
 Author.delete = async (connection, authorId) => {
+    const sql = 'DELETE FROM `authors` WHERE `id` = ' + authorId;
+    const [rows] = await connection.execute(sql);
+    const res = `Autorius id:${authorId} sekmingai istrintas`;
+    return res;
+
+    console.log(rows);
 }
 
 module.exports = Author;
