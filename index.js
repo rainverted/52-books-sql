@@ -13,6 +13,7 @@ app.init = async () => {
     });
 
     // LOGIC BELOW
+    //AUTHORS
     await Author.create(conn, 'Vardenis', 'Pavardenis');
     await Author.create(conn, 'Petras', 'Petraitis');
     await Author.create(conn, 'Jonas', 'Jonaitis');
@@ -34,6 +35,16 @@ app.init = async () => {
 
     const deleteAuthor = await Author.delete(conn, 3);
     console.log(deleteAuthor);
+
+
+    //BOOKS
+    await Books.create(conn, 1, 'Vanagas', '1000');
+    await Books.create(conn, 2, 'Kovas', '2000');
+    await Books.create(conn, 3, 'Kranklys', '2001');
+    await Books.create(conn, 4, 'Zyle', '3000');
+
+
+
 }
 
 app.init();

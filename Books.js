@@ -14,6 +14,13 @@ const Books = {};
  * @returns {Promise<string>} Tekstas, apibudinantis, koks autorius ir kurias metais isleido knyga.
  */
 Books.create = async (connection, authorId, bookName, bookReleaseYear) => {
+    const sql = 'INSERT INTO `books`\
+                (`id`, `author_Id`, `bookname`, `release_year`) \
+                VALUES (NULL, "'+ authorId + '", "' + bookName + '", "' + bookReleaseYear + '")';
+    const [rows] = await connection.execute(sql);
+    const res = `Knyga "${bookName}" sekmingai irasyta`;
+    console.log(res);
+    return res;
 }
 
 /**
