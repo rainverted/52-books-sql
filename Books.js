@@ -78,14 +78,23 @@ Books.updateById = async (connection, bookId, propertyName, propertyValue) => {
                 SET `'+ propertyName + '`= "' + propertyValue + '" \
                 WHERE `books`.`id` =' + bookId;
     const [rows] = await connection.execute(sql);
-    console.log(`Knygos informacija atnaujinta sekmingai: "${propertyValue}"`);
+    console.log(`Autoriaus duomenys atnaujinti sekmingai: "${propertyValue}"`);
 }
 
 Books.updateNameById = async (connection, bookId, bookName) => {
-
+    const sql = 'UPDATE `books`\
+                SET `bookname`= "' + bookName + '" \
+                WHERE `books`.`id` =' + bookId;
+    const [rows] = await connection.execute(sql);
+    console.log(`Knygos informacija atnaujinta sekmingai: "${bookName}"`);
 }
 
 Books.updateYearById = async (connection, bookId, bookReleaseYear) => {
+    const sql = 'UPDATE `books`\
+                SET `release_year`= "' + bookReleaseYear + '" \
+                WHERE `books`.`id` =' + bookId;
+    const [rows] = await connection.execute(sql);
+    console.log(`Knygos leidimo metai atnaujinti sekmingai: "${bookReleaseYear}"`);
 }
 
 Books.delete = async (connection, bookId) => {
