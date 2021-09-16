@@ -43,10 +43,8 @@ Author.findById = async (connection, authorId) => {
     const [rows] = await connection.execute(sql);
     console.log('');
     for (const { firstname, lastname } of rows) {
-        console.log(`Autoriaus "${firstname} ${lastname}" unikalus id:${authorId}.`)
+        return `Autoriaus "${firstname} ${lastname}" unikalus id:${authorId}.`;
     }
-    return
-    // console.log(rows);
 }
 
 Author.findByFirstname = async (connection, authorFirstname) => {
@@ -55,7 +53,7 @@ Author.findByFirstname = async (connection, authorFirstname) => {
                 WHERE `firstname` LIKE  "%' + authorFirstname + '%"';
     const [rows] = await connection.execute(sql);
     for (const { id } of rows) {
-        console.log(`Autoriaus, kurio vardas - ${authorFirstname}, id - ${id}.`)
+        return `Autoriaus, kurio vardas - ${authorFirstname}, id - ${id}.`
     }
 }
 
@@ -65,7 +63,7 @@ Author.findByLastname = async (connection, authorLastname) => {
                  WHERE `lastname` LIKE  "%' + authorLastname + '%"';
     const [rows] = await connection.execute(sql);
     for (const { id } of rows) {
-        console.log(`Autoriaus, kurio pavarde - ${authorLastname}, id - ${id}.`)
+        return `Autoriaus, kurio pavarde - ${authorLastname}, id - ${id}.`;
     }
 }
 
