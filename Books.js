@@ -54,25 +54,23 @@ Books.findByName = async (connection, bookName) => {
                 FROM `books`\
                 LEFT JOIN `authors`\
                         ON `authors`.`id` = `books`.`author_Id`\
-                WHERE `bookname` LIKE  "%' + bookName + '%"';;
+                WHERE `bookname` LIKE  "%' + bookName + '%"';
     const [rows] = await connection.execute(sql);
     for (const { id } of rows) {
         return `Autorius, kurio ID:${id} parase knyga ${bookName}`;
     };
-    console.log(rows);
 }
 
 Books.findByYear = async (connection, bookReleaseYear) => {
-    // const sql = 'SELECT *\
-    //             FROM `books`\
-    //             LEFT JOIN `authors`\
-    //                 ON`authors`.`id` = `books`.`author_Id`';
-    // const [rows] = await connection.execute(sql);
-    // for (const { firstname, lastname } of rows) {
-    //     return `${firstname} ${lastname} isleido knyga ${bookReleaseYear}`;
-    // };
-    // console.log(rows);
-
+    const sql = 'SELECT *, `authors`.`id`\
+                FROM `books`\
+                LEFT JOIN `authors`\
+                        ON `authors`.`id` = `books`.`author_Id`\
+                WHERE `release_year` LIKE  "%' + bookReleaseYear + '%"';
+    const [rows] = await connection.execute(sql);
+    for (const { bookname } of rows) {
+        return `Knyga "${bookname}" isleista ${bookReleaseYear} metais.`;
+    };
 }
 
 Books.updateById = async (connection, bookId, propertyName, propertyValue) => {

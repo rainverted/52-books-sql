@@ -56,8 +56,8 @@ app.init = async () => {
     console.log(bookname);
     console.log('');
 
-    // const bookYear = await Books.findByYear(conn, '2001');
-    // console.log(bookYear);
+    const bookYear = await Books.findByYear(conn, '2001');
+    console.log(bookYear);
 
 
 
