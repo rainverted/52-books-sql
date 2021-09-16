@@ -50,20 +50,28 @@ Books.listAll = async (connection) => {
  * @returns {Promise<Object[]>} Sarasas su knygu objektais.
  */
 Books.findByName = async (connection, bookName) => {
-    const sql = 'SELECT *\
-                    FROM `books`\
-                    LEFT JOIN `authors`\
-                    ON `authors`.`id` = `books`.`author_Id`';
+    const sql = 'SELECT *, `authors`.`id`\
+                FROM `books`\
+                LEFT JOIN `authors`\
+                        ON `authors`.`id` = `books`.`author_Id`\
+                WHERE `bookname` LIKE  "%' + bookName + '%"';;
     const [rows] = await connection.execute(sql);
-    for (const { bookname, firstname, lastname } of rows) {
-        return `${firstname} ${lastname} parase knyga ${bookname}`;
+    for (const { id } of rows) {
+        return `Autorius, kurio ID:${id} parase knyga ${bookName}`;
     };
     console.log(rows);
 }
 
 Books.findByYear = async (connection, bookReleaseYear) => {
-    // const sql = '';
+    // const sql = 'SELECT *\
+    //             FROM `books`\
+    //             LEFT JOIN `authors`\
+    //                 ON`authors`.`id` = `books`.`author_Id`';
     // const [rows] = await connection.execute(sql);
+    // for (const { firstname, lastname } of rows) {
+    //     return `${firstname} ${lastname} isleido knyga ${bookReleaseYear}`;
+    // };
+    // console.log(rows);
 
 }
 
