@@ -78,7 +78,7 @@ Books.updateById = async (connection, bookId, propertyName, propertyValue) => {
                 SET `'+ propertyName + '`= "' + propertyValue + '" \
                 WHERE `books`.`id` =' + bookId;
     const [rows] = await connection.execute(sql);
-    console.log(`Atnaujintas knygos pavadinimas: "${propertyValue}"`);
+    console.log(`Knygos informacija atnaujinta sekmingai: "${propertyValue}"`);
 }
 
 Books.updateNameById = async (connection, bookId, bookName) => {
