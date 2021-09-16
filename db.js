@@ -56,7 +56,7 @@ db.createTableBooks = async (connection) => {
     try {
         const sql = 'CREATE TABLE IF NOT EXISTS `books` (\
                         `id` int(10) NOT NULL AUTO_INCREMENT,\
-                        `author_Id` char(20) COLLATE utf8_swedish_ci NOT NULL,\
+                        `author_Id` int(10) NOT NULL,\
                         `bookname` char(20) COLLATE utf8_swedish_ci NOT NULL,\
                         `release_year` INT(4) NOT NULL,\
                         PRIMARY KEY(`id`)\

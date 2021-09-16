@@ -74,9 +74,15 @@ Books.findByYear = async (connection, bookReleaseYear) => {
 }
 
 Books.updateById = async (connection, bookId, propertyName, propertyValue) => {
+    const sql = 'UPDATE `books`\
+                SET `'+ propertyName + '`= "' + propertyValue + '" \
+                WHERE `books`.`id` =' + bookId;
+    const [rows] = await connection.execute(sql);
+    console.log(`Atnaujintas knygos pavadinimas: "${propertyValue}"`);
 }
 
 Books.updateNameById = async (connection, bookId, bookName) => {
+
 }
 
 Books.updateYearById = async (connection, bookId, bookReleaseYear) => {

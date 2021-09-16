@@ -58,7 +58,9 @@ app.init = async () => {
 
     const bookYear = await Books.findByYear(conn, '2001');
     console.log(bookYear);
+    console.log('');
 
+    const bookId = await Books.updateById(conn, 2, 'bookname', 'Kovas vol.II');
 
 
 }
