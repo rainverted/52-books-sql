@@ -20,6 +20,7 @@ app.init = async () => {
 
     const authors = await Author.listAll(conn);
     console.log(authors);
+    console.log('');
 
     const uniqueId = await Author.findById(conn, 3);
     console.log(uniqueId);
@@ -45,6 +46,9 @@ app.init = async () => {
 
     const booklist = await Books.listAll(conn);
     console.log(booklist);
+
+    const bookname = await Books.findByName(conn, 'Zyle');
+    console.log(bookname);
 
 }
 

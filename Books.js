@@ -50,9 +50,21 @@ Books.listAll = async (connection) => {
  * @returns {Promise<Object[]>} Sarasas su knygu objektais.
  */
 Books.findByName = async (connection, bookName) => {
+    const sql = 'SELECT *\
+                    FROM `books`\
+                    LEFT JOIN `authors`\
+                    ON `authors`.`id` = `books`.`author_Id`';
+    const [rows] = await connection.execute(sql);
+    for (const { bookname, firstname, lastname } of rows) {
+        return `${firstname} ${lastname} parase knyga ${bookname}`;
+    };
+    console.log(rows);
 }
 
 Books.findByYear = async (connection, bookReleaseYear) => {
+    // const sql = '';
+    // const [rows] = await connection.execute(sql);
+
 }
 
 Books.updateById = async (connection, bookId, propertyName, propertyValue) => {
