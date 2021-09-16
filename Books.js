@@ -98,9 +98,17 @@ Books.updateYearById = async (connection, bookId, bookReleaseYear) => {
 }
 
 Books.delete = async (connection, bookId) => {
+    const sql = 'DELETE FROM `books`\
+                WHERE `id` =' + bookId;
+    const [rows] = await connection.execute(sql);
+    console.log(`Knyga, kurios ID: "${bookId}" sekmingai istrinta`);
 }
 
 Books.deleteAllByAuthorId = async (connection, authorId) => {
+    const sql = 'DELETE FROM `books`\
+                WHERE `author_Id` =' + authorId;
+    const [rows] = await connection.execute(sql);
+    console.log(`Visos autoriaus ID: "${authorId}" knygos sekmingai istrintos`);
 }
 
 module.exports = Books;

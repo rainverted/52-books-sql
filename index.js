@@ -63,6 +63,10 @@ app.init = async () => {
     const bookId = await Books.updateById(conn, 2, 'bookname', 'Kovas vol.II');
     const newName = await Books.updateNameById(conn, 1, 'Skrydis');
     const newYear = await Books.updateYearById(conn, 1, '2005');
+    console.log('');
+
+    const bookDelete = await Books.delete(conn, 1);
+    const deleteAll = await Books.deleteAllByAuthorId(conn, 3);
 
 
 
