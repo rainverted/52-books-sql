@@ -33,17 +33,18 @@ app.init = async () => {
     const update = await Author.updatePropertyById(conn, 1, 'firstname', 'Tomas')
     console.log(update);
 
-    const deleteAuthor = await Author.delete(conn, 3);
-    console.log(deleteAuthor);
+    // const deleteAuthor = await Author.delete(conn, 3);
+    // console.log(deleteAuthor);
 
 
     //BOOKS
     await Books.create(conn, 1, 'Vanagas', '1000');
     await Books.create(conn, 2, 'Kovas', '2000');
     await Books.create(conn, 3, 'Kranklys', '2001');
-    await Books.create(conn, 4, 'Zyle', '3000');
+    await Books.create(conn, 3, 'Zyle', '3000');
 
-
+    const booklist = await Books.listAll(conn);
+    console.log(booklist);
 
 }
 

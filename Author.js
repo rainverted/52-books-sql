@@ -77,11 +77,11 @@ Author.updatePropertyById = async (connection, authorId, propertyName, propertyV
     console.log(`Atnaujintas autoriaus vardas: ${propertyValue}`);
 }
 
-Author.delete = async (connection, authorId) => {
-    const sql = 'DELETE FROM `authors` WHERE `id` = ' + authorId;
-    const [rows] = await connection.execute(sql);
-    const res = `Autorius id:${authorId} sekmingai istrintas`;
-    return res;
-}
+// Author.delete = async (connection, authorId) => {
+//     const sql = 'DELETE FROM `authors` WHERE `id` = ' + authorId;
+//     const [rows] = await connection.execute(sql);
+//     const res = `Autorius id:${authorId} sekmingai istrintas`;
+//     return res;
+// }
 
 module.exports = Author;
